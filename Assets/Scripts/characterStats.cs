@@ -35,7 +35,7 @@ public class characterStats : MonoBehaviour
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal"); // pressing A and D on the keyboard will move character on the x axis from left to right respectively.
-        transform.position = transform.position + new Vector3(-horizontalInput * Time.deltaTime * Speed, 0, 0);
+        transform.position = transform.position + new Vector3(horizontalInput * Time.deltaTime * Speed, 0, 0);
 
         if (horizontalInput < 0) // when character moves left sprite will face towards the left
         {

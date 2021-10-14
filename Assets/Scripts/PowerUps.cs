@@ -25,7 +25,7 @@ public class PowerUps : MonoBehaviour
     {
         // sets gameobject to something
         Item = GetComponent<ItemCheck>();
-        Player = GameObject.Find("New Sprite");
+        Player = GameObject.Find("Vampire V1");
         stats = Player.GetComponent<characterStats>();
     }
     private void OnTriggerEnter2D(Collider2D collision)

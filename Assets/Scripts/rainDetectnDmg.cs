@@ -14,7 +14,7 @@ public class rainDetectnDmg : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
         Physics2D.queriesStartInColliders = false; // stops the raycast from detecting the collider from the point of origin
-        player = GameObject.Find("New Sprite"); // access the gameobject player ** change the New Sprite to name of character sprite
+        player = GameObject.Find("Vampire V1"); // access the gameobject player ** change the New Sprite to name of character sprite
         stats = player.GetComponent<characterStats>(); // access the characterstats
     }
     private void FixedUpdate()

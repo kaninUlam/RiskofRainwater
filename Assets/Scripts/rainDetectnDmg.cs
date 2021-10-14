@@ -6,8 +6,10 @@ public class rainDetectnDmg : MonoBehaviour
 {
     Rigidbody2D rb2D; // rigidbody2d
 
+    public int damage = 1;
     public GameObject player;
     public characterStats stats;
+    public healthBar Healthbar;
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -23,8 +25,9 @@ public class rainDetectnDmg : MonoBehaviour
         {
             if(hit.collider.gameObject.tag == "Player" && stats.isInvincible == false) // if player is hit and is not invincible
             {
-                Debug.Log(stats.maxHealth);
-                stats.maxHealth -= Time.deltaTime * 2; // decreases health using time.deltatime 
+                Debug.Log(stats.CurrentHealth);
+                stats.CurrentHealth -= damage; // decreases health using time.deltatime 
+                Healthbar.SetHealth(stats.CurrentHealth);
                 Debug.DrawLine(gameObject.transform.position, hit.point, Color.red); // draws line
             }
             if (hit.collider.gameObject.tag == "Player" && stats.isInvincible == true) // if player is hit and is invincible

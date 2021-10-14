@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class characterStats : MonoBehaviour
 {
 
     // health and jump for character
-    public float maxHealth = 100f;
+    public int maxHealth = 100;
+    public int CurrentHealth;
     public int JumpNum = 2;
-    
+
+    public healthBar Healthbar;
+
     // movement variables
     public float Speed = 10f;
     public float JumpHeight = 8f;
@@ -22,6 +26,8 @@ public class characterStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CurrentHealth = maxHealth;
+        Healthbar.SetMaxHealth(maxHealth);
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -45,6 +51,13 @@ public class characterStats : MonoBehaviour
             JumpNum--;
             IsJumping = true;
             IsGrounded = false;
+        }
+    }
+    public void AliveCheck()
+    {
+        if (CurrentHealth <= 0)
+        {
+            
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

@@ -43,7 +43,7 @@ public class characterStats : MonoBehaviour
         }
         if (horizontalInput > 0)// when character moves right sprite will face towards the right
         {
-            this.gameObject.transform.eulerAngles = new Vector3(0, 180, 0);
+            this.gameObject.transform.eulerAngles = new Vector3(0, 0,0);
         }
         if (Input.GetKeyDown(KeyCode.Space) && JumpNum >= 1) // pressing spacebar will make the character jump up in the y axis
         {
@@ -57,7 +57,7 @@ public class characterStats : MonoBehaviour
     {
         if (CurrentHealth <= 0)
         {
-            
+            SceneManager.LoadScene(2);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

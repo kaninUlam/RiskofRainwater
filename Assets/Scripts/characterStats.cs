@@ -18,6 +18,7 @@ public class characterStats : MonoBehaviour
     bool IsAlive = true;
     bool IsJumping = false;
     bool IsGrounded = true;
+    public bool isInvincible = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +29,7 @@ public class characterStats : MonoBehaviour
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal"); // pressing A and D on the keyboard will move character on the x axis from left to right respectively.
-        transform.position = transform.position + new Vector3(horizontalInput * Time.deltaTime * Speed, 0, 0);
+        transform.position = transform.position + new Vector3(-horizontalInput * Time.deltaTime * Speed, 0, 0);
 
         if (horizontalInput < 0) // when character moves left sprite will face towards the left
         {
@@ -38,7 +39,7 @@ public class characterStats : MonoBehaviour
         {
             this.gameObject.transform.eulerAngles = new Vector3(0, 180, 0);
         }
-        if (Input.GetKeyDown("space") && JumpNum >= 1) // pressing spacebar will make the character jump up in the y axis
+        if (Input.GetKeyDown(KeyCode.Space) && JumpNum >= 1) // pressing spacebar will make the character jump up in the y axis
         {
             rb2d.AddForce(Vector2.up * JumpHeight, ForceMode2D.Impulse);
             JumpNum--;

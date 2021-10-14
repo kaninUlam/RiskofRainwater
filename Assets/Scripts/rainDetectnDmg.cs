@@ -5,10 +5,15 @@ using UnityEngine;
 public class rainDetectnDmg : MonoBehaviour
 {
     Rigidbody2D rb2D; // rigidbody2d
+
+    public GameObject player;
+    public characterStats stats;
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
         Physics2D.queriesStartInColliders = false; // stops the raycast from detecting the collider from the point of origin
+        player = GameObject.Find("New Sprite"); // access the gameobject player ** change the New Sprite to name of character sprite
+        stats = player.GetComponent<characterStats>(); // access the characterstats
     }
     private void FixedUpdate()
     {
@@ -16,16 +21,17 @@ public class rainDetectnDmg : MonoBehaviour
 
         if (hit.collider != null) // checks if raycast collides with an object
         {
-            if(hit.collider.gameObject.tag == "Player") // if player is hit
+            if(hit.collider.gameObject.tag == "Player" && stats.isInvincible == false) // if player is hit and is not invincible
             {
-                GameObject player = GameObject.Find("New Sprite"); // access the gameobject player ** change the New Sprite to name of character sprite
-                characterStats stats = player.GetComponent<characterStats>(); // access the characterstats
                 Debug.Log(stats.maxHealth);
-                stats.maxHealth -= Time.deltaTime * 2; // decreases health using time.deltatime
-                
+                stats.maxHealth -= Time.deltaTime * 2; // decreases health using time.deltatime 
                 Debug.DrawLine(gameObject.transform.position, hit.point, Color.red); // draws line
             }
-            if(hit.collider.gameObject.tag == "platform") // if platform is hit
+            if (hit.collider.gameObject.tag == "Player" && stats.isInvincible == true) // if player is hit and is invincible
+            {
+                Debug.DrawLine(gameObject.transform.position, hit.point, Color.red); // draws line
+            }
+            if (hit.collider.gameObject.tag == "platform") // if platform is hit
             {
                 Debug.DrawLine(gameObject.transform.position, hit.point, Color.green); // draws line
                 Debug.Log("not hit");

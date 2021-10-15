@@ -16,7 +16,7 @@ public class characterStats : MonoBehaviour
     // movement variables
     public float Speed = 10f;
     public float JumpHeight = 8f;
-    Rigidbody2D rb2d;
+    public Rigidbody2D rb2d;
 
     // checks for character
     bool IsAlive = true;

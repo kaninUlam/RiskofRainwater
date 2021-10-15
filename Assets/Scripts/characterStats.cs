@@ -16,7 +16,7 @@ public class characterStats : MonoBehaviour
     // movement variables
     public float Speed = 10f;
     public float JumpHeight = 8f;
-    Rigidbody2D rb2d;
+    public Rigidbody2D rb2d;
 
     // checks for character
     bool IsAlive = true;
@@ -47,10 +47,16 @@ public class characterStats : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && JumpNum >= 1) // pressing spacebar will make the character jump up in the y axis
         {
+            Debug.Log("jump");
             rb2d.AddForce(Vector2.up * JumpHeight, ForceMode2D.Impulse);
             JumpNum--;
-            IsJumping = true;
-            IsGrounded = false;
+
+        }
+
+        if (CurrentHealth <= 0)
+        {
+            Debug.Log("Load Dealth");
+            SceneManager.LoadScene(2);
         }
     }
     public void AliveCheck()
@@ -65,8 +71,7 @@ public class characterStats : MonoBehaviour
         
         if (collision.gameObject.tag == "platform") // resets the number of jumps when touching the platform
         {
-            IsGrounded = true;
-            IsJumping = false;
+            
             JumpNum = 2;
         }
     }

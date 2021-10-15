@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Kyle/Scenes/Death.unity
     guid: a4fd8d71f2065fc40ac9bc0ce602690d
+  - enabled: 1
+    path: Assets/Kyle/Scenes/Win.unity
+    guid: a124d65e54113aa47a60071b72da13a0
   m_configObjects: {}

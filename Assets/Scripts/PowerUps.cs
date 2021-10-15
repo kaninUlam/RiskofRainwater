@@ -39,11 +39,11 @@ public class PowerUps : MonoBehaviour
         {
             // in the case of item pick up is health
             case Items.Health: 
-                stats.maxHealth += Healthboost;
+                stats.CurrentHealth += Healthboost;
                 GetComponent<SpriteRenderer>().enabled = false;
                 GetComponent<CircleCollider2D>().enabled = false;
                 yield return new WaitForSeconds(DurationItemHealth);
-                stats.maxHealth -= Healthboost;
+                stats.CurrentHealth -= Healthboost;
                 Destroy(this.gameObject);
                 break;
 
